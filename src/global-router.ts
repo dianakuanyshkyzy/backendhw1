@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import authRouter from './auth/auth-router';
-import userRouter from './user/user-router';
+import eventRouter from './events/event-router';
 // other routers can be imported here
 
 const globalRouter = Router();
 
-// Use the userRouter for user-related routes
-globalRouter.use(userRouter);
+
 globalRouter.use(authRouter);
+globalRouter.use(eventRouter)
 
 // other routers can be added here
 
