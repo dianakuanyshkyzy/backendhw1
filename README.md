@@ -4,56 +4,19 @@ This is a boilerplate project for building Node.js applications using TypeScript
 
 ## 🚀 Getting Started
 
-To get started with this project, follow these steps:
-
-1. Fork this repository to your GitHub account.
-2. Clone the repository to your local machine:
-   git clone https://github.com/your-username/todo-list-app.git
 
    ```bash
+   git clone https://github.com/dianakuanyshkyzy/backendhw1.git
    npm install
-   ```
-
-   or
-
-   ```bash
-   yarn install
-   ```
-
-3. Start the development server:
-
-   ```bash
    npm run start:dev
    ```
-
-   or
-
-   ```bash
-   yarn start:dev
-   ```
-
-## 🥉 Basic Level
-
-### Tasks
-
+## Features
 - [ ] `GET` /api/events : get list of events
 - [ ] `GET` /api/events/:id : get exact event
 - [ ] `POST` /api/events : create a new event
-
-## 🥈 Medium Level
-
-### Tasks
-
 - [ ] Registration with indication of the city
 - [ ] Login
 - [ ] A list of events in the user's city is displayed in `/api/events` for an authorized user
-
-## 🥇 Hard Level
-
-### Tasks
-
-- [ ] Add paginations
-- [ ] Sorting for `/api/events?sortBy=rating&sortDirection=desc`
 
 ### 📂 Explanation of Structure
 
@@ -85,4 +48,3 @@ To get started with this project, follow these steps:
 
 This setup provides a structured way to build a Node.js application using TypeScript, with clear separation of concerns and organized testing. It includes everything you need to get started quickly and scale your application efficiently.
 
-Feel free to customize the structure and add more features as per your requirements. Happy coding! 💻
