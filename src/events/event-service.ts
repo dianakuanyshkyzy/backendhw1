@@ -15,6 +15,10 @@ class EventService {
     async getEvents(): Promise<IEvent[]> {
       return await EventModel.find().exec(); 
     }
+    
+    async getEventsByCity(location:string): Promise< IEvent[] | null>{
+      return await EventModel.find({location}); 
+    }
 
     async createEvent(createEventDto: CreateEventDto): Promise<IEvent> {
       const { name, description, date, location ,duration} = createEventDto;
