@@ -7,7 +7,8 @@ const globalRouter = Router();
 
 
 globalRouter.use(authRouter);
-globalRouter.use(eventRouter)
+globalRouter.use(eventRouter);
+
 
 // other routers can be added here
 
