@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { CreateUserDto } from './dtos/CreateUser.dto';
 import AuthService from './auth-service';
+import { LoginUserDto } from './dtos/LoginUser.dto';
 
 class AuthController {
   private authService: AuthService;
@@ -21,7 +22,7 @@ class AuthController {
 
   loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { email, password } = req.body;
+      const { email, password }: LoginUserDto = req.body;
       const result = await this.authService.loginUser(email, password);
       if (!result) {
         res.status(401).json({ message: 'Invalid email or password' });

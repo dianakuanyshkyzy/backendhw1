@@ -10,8 +10,8 @@ const eventRouter = Router();
 const eventService = new EventService();
 const eventController = new EventController(eventService);
 
-eventRouter.get('/events/', eventController.getEvents);
+eventRouter.get('/events/', authMiddleware, eventController.getEvents);
 eventRouter.post('/events/', eventController.createEvent);
-eventRouter.get('/events/:id', eventController.getEventById);
+eventRouter.get('/events/:id', authMiddleware, eventController.getEventById);
 
 export default eventRouter;

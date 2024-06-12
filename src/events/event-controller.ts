@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { CreateEventDto } from './dtos/CreateEvent.dot';
 import EventService from './event-service';
 import { authMiddleware } from '../middlewares/auth-middleware';
+import { UserCityDto } from '../auth/dtos/UserCity.dto';
+import { IEvent } from './models/Event';
 
 class EventController {
     private eventService : EventService;
@@ -24,17 +26,21 @@ class EventController {
 
 
     getEvents = async (req: Request, res: Response): Promise<void> => {
-        try {
-          const user = (req as any).user;
-          const city = user.city; 
-          const events = await this.eventService.getEventsByCity(city);
-          res.status(200).json(events);
-        } catch (error: any) {
-          res.status(500).send({ error: error.message });
-        }
+      const user: UserCityDto = (req as any).user;
 
+      if (!user) {
+          res.status(404).json({ error: 'User not found' });
+          return;
       }
-
+      const city = user.city;
+      if (!city) {
+          res.status(400).json({ error: 'User city not found' });
+          return;
+      }
+      const events = await this.eventService.getEventsByCity(city);
+      res.status(200).json(events);
+    }
+    
     getEventById = async (req: Request, res: Response): Promise<void> => {
         try {
           const { id } = req.params;
@@ -47,7 +53,7 @@ class EventController {
         } catch (error: any) {
           res.status(500).send({ error: error.message });
         }
-      }
+    }
 }
 
 export default EventController;
